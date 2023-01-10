@@ -2657,7 +2657,7 @@ static int nl80211_get_scanlist_nl(const char *ifname, char *buf, int *len)
 {
 	struct nl80211_scanlist sl = { .e = (struct iwinfo_scanlist_entry *)buf };
 
-	if (nl80211_request(ifname, NL80211_CMD_TRIGGER_SCAN, 0, NULL, NULL))
+	if (nl80211_request(ifname, NL80211_CMD_TRIGGER_SCAN, NL80211_SCAN_FLAG_AP, NULL, NULL))
 		goto out;
 
 	if (nl80211_wait("nl80211", "scan",
